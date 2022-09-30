@@ -6,6 +6,7 @@ import 'jquery';
 import './Components/css/qa.css';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
+import MyComponent from './Components/MyComponent';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <h1>
           Other UIs to go here
         </h1>
+        <MyComponent />
       </div>
       <Footer />
     </div>

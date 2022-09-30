@@ -9,7 +9,6 @@ const MyComponent = () => {
             <AnotherComponent />
             <MyClassComponent />
         </>
-
 )}
 
 export default MyComponent;

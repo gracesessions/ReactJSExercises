@@ -5,6 +5,7 @@ import 'popper.js';
 import 'jquery';
 import './Components/css/qa.css';
 import sampleTodos from './sampleTodos.json';
+import { useEffect } from 'react';
 
 import Header from './Components/Header';
 import Footer from './Components/Footer';
@@ -13,18 +14,22 @@ import AddEditTodo from './Components/AddEditTodo';
 
 function App() {
 
-  const [todos, setTodos] = useState(sampleTodos);
+  const [todos, setTodos] = useState({});
+  useEffect(() => {
+    setTodos({todos : sampleTodos}); 
+   }, []);
+
 
   const submitTodo = todo => {
-    const updatedTodos = [...todos, todo];
-    setTodos(updatedTodos);
+    const updatedTodos = [...todos.todos, todo];
+    setTodos({ todos: updatedTodos});
   }
 
   return (
     <div className="container">
       <Header />
       <div className="container">
-        <AllTodos data={{ todos }} />
+        <AllTodos data={ todos } />
         <AddEditTodo submitTodo={submitTodo} />
       </div>
       <Footer />

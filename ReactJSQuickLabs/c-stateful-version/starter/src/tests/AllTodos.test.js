@@ -7,7 +7,7 @@ test(`it should render the correct number of Todo components based on the todo a
 
     const sampleTodosLength = sampleTodos.length;
 
-    const testRenderer = create(<AllTodos />);
+    const testRenderer = create(<AllTodos data={{ todos: sampleTodos }} />);
     const testInstance = testRenderer.root;
 
     const tableBody = testInstance.findByType(`tbody`);

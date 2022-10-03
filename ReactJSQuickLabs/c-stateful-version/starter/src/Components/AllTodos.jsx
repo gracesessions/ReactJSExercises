@@ -1,12 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './css/AllTodos.css';
-import sampleTodos from '../sampleTodos.json';
-import TodoModel from './utils/Todo.model';
 
 import Todo from './Todo';
+import TodoModel from './utils/Todo.model';
 
-const AllTodos = () => {
-    const todos = sampleTodos.map(currentTodo => {
+const AllTodos = ( {data} ) => {
+    const todos = data.todos.map(currentTodo => {
         const todo = new TodoModel(currentTodo.todoDescription, currentTodo.todoDateCreated, currentTodo.todoCompleted, currentTodo._id);
         return <Todo todo={todo} key={todo._id} />
     });
@@ -27,6 +27,18 @@ const AllTodos = () => {
     );
 };
 
-export default AllTodos;
+AllTodos.propTypes = {
+    data: PropTypes.exact({
+        todos: PropTypes.arrayOf(
+            PropTypes.exact({
+                _id: PropTypes.string,
+                todoDescription: PropTypes.string,
+                todoDateCreated: PropTypes.string,
+                todoCompleted: PropTypes.bool
+            })
+        )
+    })
+};
 
+export default AllTodos;
 
